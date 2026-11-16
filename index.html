@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GRAS · Olydorf</title>
+<meta name="description" content="GRAS, the green spaces & environment committee of the Olympic Village in Munich: the Yellow Kiosk, events and more.">
+<meta name="theme-color" content="#1f4d2b">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:title" content="GRAS · Olydorf">
+<meta property="og:description" content="The Yellow Kiosk, events and more from the Olydorf green committee.">
+<meta property="og:image" content="assets/logo.png">
+<style>
+  :root{
+    --forest:#1f4d2b; --moss:#3f7a4a; --sage:#e7efe1;
+    --paper:#fbfaf5; --ink:#1d241f; --muted:#5d6b61;
+    --kiosk:#f6c945; --kiosk-deep:#d9a90f; --line:#d9e2d3; --berry:#b3262f;
+    --radius:20px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:ui-rounded,"SF Pro Rounded",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background:var(--paper); color:var(--ink); line-height:1.5;
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  a{color:inherit}
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px}
+
+  header{background:var(--forest);color:#fff;position:relative;overflow:hidden;padding:28px 0 76px}
+  header::after{content:"";position:absolute;left:-10%;right:-10%;bottom:-60px;height:120px;background:var(--paper);border-radius:50% 50% 0 0}
+  .hero{display:flex;gap:20px;align-items:center}
+  .logo{flex:0 0 112px;width:112px;height:112px;border-radius:50%;background:#fff;padding:6px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+  .logo img{width:100%;height:100%;border-radius:50%;display:block}
+  .eyebrow-light{font-size:.78rem;letter-spacing:.06em;opacity:.8;text-transform:uppercase}
+  h1{font-size:clamp(1.7rem,6vw,2.6rem);line-height:1.12;margin:6px 0 10px;font-weight:800}
+  h1 em{font-style:normal;color:var(--kiosk)}
+  .lede{max-width:40ch;opacity:.9}
+  @media (max-width:480px){ .hero{flex-direction:column;align-items:flex-start} .logo{flex-basis:96px;width:96px;height:96px} }
+
+  main{position:relative;z-index:1;margin-top:-36px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin-bottom:18px;box-shadow:0 8px 24px -16px rgba(31,77,43,.25)}
+  .card h2{font-size:1.25rem;margin-bottom:6px}
+  .card p{color:var(--muted)}
+  .eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--moss);margin-bottom:6px}
+
+  .kiosk{background:linear-gradient(160deg,#fff7d6 0%,#fff 60%);border-color:#f1dd8d}
+  .status{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.9rem;padding:6px 12px;border-radius:999px;margin:10px 0 14px;background:#eee;color:#444}
+  .status .dot{width:9px;height:9px;border-radius:50%;background:currentColor}
+  .status.open{background:#e3f4e1;color:#20733a}
+  .status.open .dot{animation:pulse 1.6s infinite}
+  .status.closed{background:#f3eee2;color:#8a6d1a}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(32,115,58,.5)}70%{box-shadow:0 0 0 8px rgba(32,115,58,0)}100%{box-shadow:0 0 0 0 rgba(32,115,58,0)}}
+  .hours{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px;margin:4px 0 16px}
+  .hours div{background:#fff;border:1px solid #efe2ae;border-radius:14px;padding:10px;text-align:center}
+  .hours b{display:block;font-size:1.05rem}
+  .hours span{font-size:.85rem;color:var(--muted)}
+  .hours .today{background:var(--kiosk);border-color:var(--kiosk-deep)}
+  .hours .today span{color:var(--ink)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .two h3{font-size:.95rem;margin-bottom:6px}
+  .two ul{list-style:none;font-size:.92rem;color:var(--muted)}
+  .two li{padding:3px 0 3px 22px;position:relative}
+  .yes li::before{content:"✓";position:absolute;left:0;color:#20733a;font-weight:700}
+  .no li::before{content:"✕";position:absolute;left:0;color:#b04a3a;font-weight:700}
+  .note{font-size:.85rem;color:var(--muted);margin-top:12px}
+  @media (max-width:420px){ .two{grid-template-columns:1fr} }
+
+  .event{display:flex;gap:16px;align-items:flex-start}
+  .date{flex:0 0 78px;height:86px;background:var(--berry);color:#fff;border-radius:16px;text-align:center;display:flex;flex-direction:column;justify-content:center}
+  .date b{font-size:1.9rem;line-height:1}
+  .date span{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;opacity:.9}
+  .countdown{font-weight:700;color:var(--moss);margin-top:8px;font-size:.95rem}
+  .menu{margin-top:14px;border-top:1px dashed var(--line);padding-top:12px}
+  .menu-row{display:flex;justify-content:space-between;padding:6px 0;font-size:.95rem}
+  .menu-row .p{color:var(--muted);font-variant-numeric:tabular-nums}
+
+  .links{display:grid;gap:10px}
+  .link{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;background:var(--sage);text-decoration:none;font-weight:600}
+  .link:active{transform:scale(.98)}
+  .link .ic{width:38px;height:38px;border-radius:12px;background:#fff;display:grid;place-items:center;font-size:1.2rem;flex:0 0 38px}
+  .link small{display:block;font-weight:500;color:var(--muted);font-size:.82rem}
+  .link .arrow{margin-left:auto;opacity:.5}
+  .link.disabled{cursor:default}
+  .link.disabled .arrow{display:none}
+
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:24px 0 36px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hero">
+    <div class="logo"><img src="assets/logo.png" alt="GRAS Olydorf logo" width="100" height="100"></div>
+    <div>
+      <div class="eyebrow-light">Grünanlagen &amp; Umwelt · Olydorf</div>
+      <h1>Keep the Dorf <em>green</em>,<br>give stuff a second life.</h1>
+      <p class="lede">The green spaces &amp; environment committee of the Olympic Village: gardens, the Yellow Kiosk, and cozy evenings with Glühwein.</p>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="card kiosk" id="kiosk">
+    <div class="eyebrow">Yellow Kiosk · Swap &amp; donate</div>
+    <h2>💛 Don't throw it away, bring it to the Kiosk</h2>
+    <p>Moving out or couldn't sell something on the Marketplace? Drop usable items at the Yellow Kiosk and someone else in the Dorf can take them for free.</p>
+    <div class="status" id="status"><span class="dot"></span><span id="status-text">Checking…</span></div>
+    <div class="hours" id="hours"></div>
+    <div class="two">
+      <div class="yes"><h3>Welcome</h3><ul id="welcome"></ul></div>
+      <div class="no"><h3>Please not</h3><ul id="not-welcome"></ul></div>
+    </div>
+    <p class="note" id="kiosk-note"></p>
+  </section>
+
+  <section class="card" id="event-card" hidden>
+    <div class="eyebrow">Save the date</div>
+    <div class="event">
+      <div class="date"><b id="event-day"></b><span id="event-month"></span></div>
+      <div>
+        <h2 id="event-title"></h2>
+        <p id="event-text"></p>
+        <div class="countdown" id="countdown"></div>
+      </div>
+    </div>
+    <div class="menu" id="menu"></div>
+    <p class="note" id="event-note"></p>
+  </section>
+
+  <section class="card">
+    <div class="eyebrow">Get involved</div>
+    <h2>🌱 Join in</h2>
+    <p style="margin-bottom:14px">Gardening, the Kiosk, events: every hand helps, and it counts toward your honorary residence semesters.</p>
+    <div class="links">
+      <a class="link" id="link-whatsapp" target="_blank" rel="noopener">
+        <span class="ic">💬</span>
+        <span>GRAS WhatsApp group<small id="whatsapp-sub">Find it in the OLYDORF – NEWS community</small></span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="link" id="link-market" target="_blank" rel="noopener">
+        <span class="ic">🛋️</span>
+        <span>Olydorf Marketplace<small id="market-sub">Buy, sell and ask around in the Dorf</small></span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="link" id="link-contact" target="_blank" rel="noopener">
+        <span class="ic">✉️</span>
+        <span>Contact the committee<small id="contact-sub">Coming soon</small></span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  GRAS · Grünanlagen &amp; Umwelt Ausschuss<br>
+  Studenten im Olympiazentrum e.V. · Munich
+</footer>
+
+<script>
+const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const DAY_NAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const $ = id => document.getElementById(id);
+const el = (tag, text, cls) => { const e = document.createElement(tag); if (text != null) e.textContent = text; if (cls) e.className = cls; return e; };
+
+// Everything is computed in Munich time, whatever the visitor's phone is set to.
+function munichNow() {
+  const p = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Berlin', year: 'numeric', month: '2-digit',
+    day: '2-digit', hour: '2-digit', minute: '2-digit', weekday: 'short', hour12: false })
+    .formatToParts(new Date()).reduce((o, x) => (o[x.type] = x.value, o), {});
+  return { day: DAYS.indexOf(p.weekday), h: +p.hour, y: +p.year, mo: +p.month, d: +p.day };
+}
+
+function renderKiosk(k) {
+  const pad = n => String(n).padStart(2, '0');
+  const hours = $('hours');
+  k.openDays.forEach(d => {
+    const box = el('div'); box.dataset.day = d;
+    box.append(el('b', DAYS[d]), el('span', `${k.openHour}–${k.closeHour} h`));
+    hours.append(box);
+  });
+  k.welcome.forEach(t => $('welcome').append(el('li', t)));
+  k.notWelcome.forEach(t => $('not-welcome').append(el('li', t)));
+  $('kiosk-note').textContent = k.note || '';
+
+  const update = () => {
+    const t = munichNow(), s = $('status'), txt = $('status-text');
+    hours.querySelectorAll('[data-day]').forEach(b => b.classList.toggle('today', +b.dataset.day === t.day));
+    const today = k.openDays.includes(t.day);
+    if (today && t.h >= k.openHour && t.h < k.closeHour) {
+      s.className = 'status open'; txt.textContent = `Open now · until ${pad(k.closeHour)}:00`;
+    } else {
+      s.className = 'status closed';
+      if (today && t.h < k.openHour) { txt.textContent = `Closed · opens today at ${pad(k.openHour)}:00`; return; }
+      let n = 1; while (!k.openDays.includes((t.day + n) % 7) && n < 8) n++;
+      txt.textContent = `Closed · opens ${n === 1 ? 'tomorrow' : DAY_NAMES[(t.day + n) % 7]} at ${pad(k.openHour)}:00`;
+    }
+  };
+  update(); setInterval(update, 60000);
+}
+
+function renderEvent(e) {
+  if (!e || !e.date) return;
+  const [y, m, d] = e.date.split('-').map(Number);
+  const t = munichNow();
+  const days = Math.round((Date.UTC(y, m - 1, d) - Date.UTC(t.y, t.mo - 1, t.d)) / 864e5);
+  if (days < 0) return;                       // event is over: hide the card
+  $('event-card').hidden = false;
+  $('event-day').textContent = d;
+  $('event-month').textContent = MONTHS[m - 1];
+  $('event-title').textContent = '🎄 ' + e.title;
+  $('event-text').textContent = e.text || '';
+  $('countdown').textContent = days > 1 ? `⏳ ${days} days to go` : days === 1 ? '⏳ Tomorrow!' : '✨ Today! See you there';
+  (e.prices || []).forEach(p => {
+    const row = el('div', null, 'menu-row');
+    row.append(el('span', p.item), el('span', p.price || 'price coming soon', 'p'));
+    $('menu').append(row);
+  });
+  $('event-note').textContent = e.note || '';
+}
+
+function setLink(id, url, subId, subText) {
+  const a = $(id);
+  if (url) { a.href = url; a.classList.remove('disabled'); }
+  else { a.removeAttribute('href'); a.classList.add('disabled'); }
+  if (subText) $(subId).textContent = subText;
+}
+
+// The Marketplace lives on a separate server. If it is not set or not reachable,
+// send people to the WhatsApp Marketplace group instead, so this page never shows a dead link.
+async function renderLinks(l) {
+  setLink('link-whatsapp', l.whatsappGroup, 'whatsapp-sub', l.whatsappGroup ? 'Tap to join' : null);
+  setLink('link-contact', l.contact, 'contact-sub', l.contact ? 'Write to us' : null);
+  setLink('link-market', null, 'market-sub', 'Ask in the OLYDORF – NEWS community on WhatsApp');
+  if (!l.marketplace) return;
+  try {
+    const ctl = new AbortController(); setTimeout(() => ctl.abort(), 4000);
+    await fetch(l.marketplace, { mode: 'no-cors', signal: ctl.signal, cache: 'no-store' });
+    setLink('link-market', l.marketplace, 'market-sub', 'Buy, sell and ask around in the Dorf');
+  } catch { /* unreachable: keep the WhatsApp fallback */ }
+}
+
+fetch('data/kiosk.json', { cache: 'no-cache' })
+  .then(r => r.json())
+  .then(data => { renderKiosk(data.kiosk); renderEvent(data.event); renderLinks(data.links || {}); })
+  .catch(() => { $('status-text').textContent = 'Could not load the opening hours'; });
+</script>
+</body>
+</html>

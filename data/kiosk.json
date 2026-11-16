@@ -1,0 +1,39 @@
+{
+  "_help": "Edit the values below in the GitHub web editor, then Commit. The page updates within about a minute. Times are Munich time. Days: 0=Sun 1=Mon 2=Tue 3=Wed 4=Thu 5=Fri 6=Sat.",
+
+  "kiosk": {
+    "openDays": [1, 3, 4],
+    "openHour": 20,
+    "closeHour": 21,
+    "welcome": [
+      "Kitchenware & dishes",
+      "Books, games, decor",
+      "Small furniture & lamps",
+      "Clean clothes & textiles"
+    ],
+    "notWelcome": [
+      "Broken or dirty items",
+      "Food & liquids",
+      "Mattresses",
+      "Batteries & chemicals"
+    ],
+    "note": "Outside opening hours you can still leave things there, just keep it tidy for the next person."
+  },
+
+  "event": {
+    "title": "Christmas Market in the Olydorf",
+    "date": "2026-12-18",
+    "text": "Glühwein, waffles and good company. Come by, bring friends, and help us set up if you like!",
+    "prices": [
+      { "item": "🍷 Glühwein", "price": "" },
+      { "item": "🧇 Waffles", "price": "" }
+    ],
+    "note": "Helping at the stand? Remember your health certificate (Gesundheitszeugnis) if you serve drinks or make waffles."
+  },
+
+  "links": {
+    "whatsappGroup": "",
+    "marketplace": "",
+    "contact": ""
+  }
+}
