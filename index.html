@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GRAS · Olydorf</title>
-<meta name="description" content="GRAS, the green spaces & environment committee of the Olympic Village in Munich: the Yellow Kiosk, events and more.">
+<meta name="description" content="GRAS, the green spaces & environment committee of the Olympic Village in Munich: the Yellow Kiosk with free printing, a cheap shop, lending, Bio-Tonne and events.">
 <meta name="theme-color" content="#1f4d2b">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -26,77 +26,109 @@
     padding-bottom:env(safe-area-inset-bottom);
   }
   a{color:inherit}
-  .wrap{max-width:720px;margin:0 auto;padding:0 20px}
+  button{font:inherit;color:inherit}
+  .wrap{max-width:720px;margin:0 auto;padding:0 16px}
 
-  header{background:var(--forest);color:#fff;position:relative;overflow:hidden;padding:28px 0 76px}
+  header{background:var(--forest);color:#fff;position:relative;overflow:hidden;padding:24px 0 70px}
   header::after{content:"";position:absolute;left:-10%;right:-10%;bottom:-60px;height:120px;background:var(--paper);border-radius:50% 50% 0 0}
-  .hero{display:flex;gap:20px;align-items:center}
-  .logo{flex:0 0 112px;width:112px;height:112px;border-radius:50%;background:#fff;padding:6px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+  .hero{display:flex;gap:16px;align-items:center}
+  .logo{flex:0 0 84px;width:84px;height:84px;border-radius:50%;background:#fff;padding:5px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
   .logo img{width:100%;height:100%;border-radius:50%;display:block}
-  .eyebrow-light{font-size:.78rem;letter-spacing:.06em;opacity:.8;text-transform:uppercase}
-  h1{font-size:clamp(1.7rem,6vw,2.6rem);line-height:1.12;margin:6px 0 10px;font-weight:800}
+  .eyebrow-light{font-size:.72rem;letter-spacing:.06em;opacity:.8;text-transform:uppercase}
+  h1{font-size:clamp(1.45rem,6vw,2.3rem);line-height:1.15;margin:4px 0 0;font-weight:800}
   h1 em{font-style:normal;color:var(--kiosk)}
-  .lede{max-width:40ch;opacity:.9}
-  @media (max-width:480px){ .hero{flex-direction:column;align-items:flex-start} .logo{flex-basis:96px;width:96px;height:96px} }
 
-  main{position:relative;z-index:1;margin-top:-36px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin-bottom:18px;box-shadow:0 8px 24px -16px rgba(31,77,43,.25)}
-  .card h2{font-size:1.25rem;margin-bottom:6px}
+  main{position:relative;z-index:1;margin-top:-40px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin-bottom:14px;box-shadow:0 8px 24px -16px rgba(31,77,43,.25)}
+  .card h2{font-size:1.15rem;margin-bottom:4px}
   .card p{color:var(--muted)}
-  .eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--moss);margin-bottom:6px}
+  .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--moss);margin-bottom:4px}
 
-  .kiosk{background:linear-gradient(160deg,#fff7d6 0%,#fff 60%);border-color:#f1dd8d}
-  .status{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.9rem;padding:6px 12px;border-radius:999px;margin:10px 0 14px;background:#eee;color:#444}
-  .status .dot{width:9px;height:9px;border-radius:50%;background:currentColor}
+  /* Kiosk: status + compact day strip + 2-column tiles */
+  .kiosk{background:linear-gradient(160deg,#fff7d6 0%,#fff 55%);border-color:#f1dd8d}
+  .kiosk-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  .status{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.85rem;padding:5px 12px;border-radius:999px;background:#eee;color:#444}
+  .status .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
   .status.open{background:#e3f4e1;color:#20733a}
   .status.open .dot{animation:pulse 1.6s infinite}
   .status.closed{background:#f3eee2;color:#8a6d1a}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(32,115,58,.5)}70%{box-shadow:0 0 0 8px rgba(32,115,58,0)}100%{box-shadow:0 0 0 0 rgba(32,115,58,0)}}
-  .hours{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px;margin:4px 0 16px}
-  .hours div{background:#fff;border:1px solid #efe2ae;border-radius:14px;padding:10px;text-align:center}
-  .hours b{display:block;font-size:1.05rem}
-  .hours span{font-size:.85rem;color:var(--muted)}
-  .hours .today{background:var(--kiosk);border-color:var(--kiosk-deep)}
-  .hours .today span{color:var(--ink)}
-  .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .two h3{font-size:.95rem;margin-bottom:6px}
-  .two ul{list-style:none;font-size:.92rem;color:var(--muted)}
-  .two li{padding:3px 0 3px 22px;position:relative}
+  .days{display:flex;gap:6px;margin:12px 0 4px}
+  .days span{flex:1;text-align:center;font-size:.8rem;font-weight:700;padding:6px 0;border-radius:10px;background:#fff;border:1px solid #efe2ae;color:var(--muted)}
+  .days span.today{background:var(--kiosk);border-color:var(--kiosk-deep);color:var(--ink)}
+  .days span.off{opacity:.35;border-style:dashed}
+  .time{font-size:.85rem;color:var(--muted);margin-bottom:12px}
+
+  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .tile{aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:space-between;text-align:left;
+        background:#fff;border:1px solid #efe2ae;border-radius:18px;padding:14px;cursor:pointer;
+        -webkit-tap-highlight-color:transparent;transition:transform .12s, box-shadow .12s}
+  .tile:hover{box-shadow:0 6px 16px -10px rgba(31,77,43,.4)}
+  .tile:active{transform:scale(.97)}
+  .tile:focus-visible{outline:3px solid var(--kiosk-deep);outline-offset:2px}
+  .tile .ic{font-size:1.9rem;line-height:1}
+  .tile b{display:block;font-size:1rem;line-height:1.25;margin-top:auto}
+  .tag{display:inline-block;margin-top:6px;font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:999px;background:#fff1bf;color:#7a5c00;align-self:flex-start}
+  .tag.free{background:#e3f4e1;color:#20733a}
+  @media (min-width:600px){ .tiles{grid-template-columns:repeat(3,1fr)} }
+
+  .note{font-size:.8rem;color:var(--muted);margin-top:12px}
+
+  /* Detail sheet */
+  dialog{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;margin:0}
+  dialog::backdrop{background:rgba(20,30,22,.45)}
+  .sheet{position:absolute;left:0;right:0;bottom:0;max-height:85vh;overflow:auto;background:#fff;border-radius:24px 24px 0 0;
+         padding:10px 20px calc(24px + env(safe-area-inset-bottom));animation:up .22s ease-out}
+  @keyframes up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+  @media (min-width:600px){ .sheet{left:50%;right:auto;bottom:auto;top:50%;transform:translate(-50%,-50%);width:520px;border-radius:24px;animation:none} }
+  .grab{width:40px;height:5px;border-radius:3px;background:#d9ddd6;margin:0 auto 10px}
+  .sheet-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+  .sheet-head .ic{font-size:1.8rem}
+  .sheet-head h3{font-size:1.2rem;flex:1}
+  .close{border:0;background:var(--sage);width:34px;height:34px;border-radius:50%;font-size:1.1rem;cursor:pointer}
+  .sheet p{color:var(--muted)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+  .chip{font-weight:700;font-size:.88rem;padding:7px 13px;border-radius:999px}
+  .chip.ok{background:#e3f4e1;color:#20733a}
+  .chip.bad{background:#f8e3df;color:#a03a2c;text-decoration:line-through;text-decoration-thickness:1.5px}
+  .sheet h4{font-size:.9rem;margin:14px 0 4px}
+  .sheet ul{list-style:none;font-size:.92rem;color:var(--muted)}
+  .sheet li{padding:3px 0 3px 22px;position:relative}
   .yes li::before{content:"✓";position:absolute;left:0;color:#20733a;font-weight:700}
   .no li::before{content:"✕";position:absolute;left:0;color:#b04a3a;font-weight:700}
-  .note{font-size:.85rem;color:var(--muted);margin-top:12px}
-  @media (max-width:420px){ .two{grid-template-columns:1fr} }
+  .row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #f1f4ee;font-size:.95rem}
+  .row:last-child{border-bottom:0}
+  .row .p{color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .cat{font-weight:700;font-size:.9rem;margin:16px 0 2px;color:var(--moss)}
 
-  .event{display:flex;gap:16px;align-items:flex-start}
-  .date{flex:0 0 78px;height:86px;background:var(--berry);color:#fff;border-radius:16px;text-align:center;display:flex;flex-direction:column;justify-content:center}
-  .date b{font-size:1.9rem;line-height:1}
-  .date span{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;opacity:.9}
-  .countdown{font-weight:700;color:var(--moss);margin-top:8px;font-size:.95rem}
-  .menu{margin-top:14px;border-top:1px dashed var(--line);padding-top:12px}
-  .menu-row{display:flex;justify-content:space-between;padding:6px 0;font-size:.95rem}
-  .menu-row .p{color:var(--muted);font-variant-numeric:tabular-nums}
+  /* Event + links */
+  .event{display:flex;gap:14px;align-items:flex-start}
+  .date{flex:0 0 66px;height:74px;background:var(--berry);color:#fff;border-radius:14px;text-align:center;display:flex;flex-direction:column;justify-content:center}
+  .date b{font-size:1.6rem;line-height:1}
+  .date span{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;opacity:.9}
+  .countdown{font-weight:700;color:var(--moss);margin-top:6px;font-size:.9rem}
+  .more{margin-top:10px;font-size:.85rem;font-weight:700;color:var(--moss);background:none;border:0;cursor:pointer;padding:0}
 
-  .links{display:grid;gap:10px}
-  .link{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;background:var(--sage);text-decoration:none;font-weight:600}
+  .links{display:grid;gap:8px;margin-top:10px}
+  .link{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:var(--sage);text-decoration:none;font-weight:600;font-size:.95rem}
   .link:active{transform:scale(.98)}
-  .link .ic{width:38px;height:38px;border-radius:12px;background:#fff;display:grid;place-items:center;font-size:1.2rem;flex:0 0 38px}
-  .link small{display:block;font-weight:500;color:var(--muted);font-size:.82rem}
+  .link .ic{width:34px;height:34px;border-radius:10px;background:#fff;display:grid;place-items:center;font-size:1.1rem;flex:0 0 34px}
+  .link small{display:block;font-weight:500;color:var(--muted);font-size:.8rem}
   .link .arrow{margin-left:auto;opacity:.5}
   .link.disabled{cursor:default}
   .link.disabled .arrow{display:none}
 
-  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:24px 0 36px}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;padding:20px 0 32px}
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap hero">
-    <div class="logo"><img src="assets/logo.png" alt="GRAS Olydorf logo" width="100" height="100"></div>
+    <div class="logo"><img src="assets/logo.png" alt="GRAS Olydorf logo" width="74" height="74"></div>
     <div>
       <div class="eyebrow-light">Grünanlagen &amp; Umwelt · Olydorf</div>
       <h1>Keep the Dorf <em>green</em>,<br>give stuff a second life.</h1>
-      <p class="lede">The green spaces &amp; environment committee of the Olympic Village: gardens, the Yellow Kiosk, and cozy evenings with Glühwein.</p>
     </div>
   </div>
 </header>
@@ -104,15 +136,16 @@
 <main class="wrap">
 
   <section class="card kiosk" id="kiosk">
-    <div class="eyebrow">Yellow Kiosk · Swap &amp; donate</div>
-    <h2>💛 Don't throw it away, bring it to the Kiosk</h2>
-    <p>Moving out or couldn't sell something on the Marketplace? Drop usable items at the Yellow Kiosk and someone else in the Dorf can take them for free.</p>
-    <div class="status" id="status"><span class="dot"></span><span id="status-text">Checking…</span></div>
-    <div class="hours" id="hours"></div>
-    <div class="two">
-      <div class="yes"><h3>Welcome</h3><ul id="welcome"></ul></div>
-      <div class="no"><h3>Please not</h3><ul id="not-welcome"></ul></div>
+    <div class="kiosk-top">
+      <div>
+        <div class="eyebrow">Yellow Kiosk</div>
+        <h2>💛 What's at the Kiosk</h2>
+      </div>
+      <div class="status" id="status"><span class="dot"></span><span id="status-text">Checking…</span></div>
     </div>
+    <div class="days" id="days"></div>
+    <div class="time" id="time"></div>
+    <div class="tiles" id="tiles"></div>
     <p class="note" id="kiosk-note"></p>
   </section>
 
@@ -122,18 +155,16 @@
       <div class="date"><b id="event-day"></b><span id="event-month"></span></div>
       <div>
         <h2 id="event-title"></h2>
-        <p id="event-text"></p>
         <div class="countdown" id="countdown"></div>
+        <button class="more" id="event-more" type="button">Details →</button>
       </div>
     </div>
-    <div class="menu" id="menu"></div>
-    <p class="note" id="event-note"></p>
   </section>
 
   <section class="card">
     <div class="eyebrow">Get involved</div>
     <h2>🌱 Join in</h2>
-    <p style="margin-bottom:14px">Gardening, the Kiosk, events: every hand helps, and it counts toward your honorary residence semesters.</p>
+    <p>Gardening, the Kiosk, events: every hand helps, and it counts toward your honorary residence semesters.</p>
     <div class="links">
       <a class="link" id="link-whatsapp" target="_blank" rel="noopener">
         <span class="ic">💬</span>
@@ -160,12 +191,26 @@
   Studenten im Olympiazentrum e.V. · Munich
 </footer>
 
+<dialog id="sheet" aria-labelledby="sheet-title">
+  <div class="sheet">
+    <div class="grab"></div>
+    <div class="sheet-head">
+      <span class="ic" id="sheet-ic"></span>
+      <h3 id="sheet-title"></h3>
+      <button class="close" id="sheet-close" type="button" aria-label="Close">✕</button>
+    </div>
+    <div id="sheet-body"></div>
+  </div>
+</dialog>
+
 <script>
 const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const DAY_NAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const $ = id => document.getElementById(id);
 const el = (tag, text, cls) => { const e = document.createElement(tag); if (text != null) e.textContent = text; if (cls) e.className = cls; return e; };
+const euro = n => new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(n);
+const price = p => typeof p === 'number' ? euro(p) : (p || 'price coming soon');
 
 // Everything is computed in Munich time, whatever the visitor's phone is set to.
 function munichNow() {
@@ -175,34 +220,83 @@ function munichNow() {
   return { day: DAYS.indexOf(p.weekday), h: +p.hour, y: +p.year, mo: +p.month, d: +p.day };
 }
 
-function renderKiosk(k) {
-  const pad = n => String(n).padStart(2, '0');
-  const hours = $('hours');
-  k.openDays.forEach(d => {
-    const box = el('div'); box.dataset.day = d;
-    box.append(el('b', DAYS[d]), el('span', `${k.openHour}–${k.closeHour} h`));
-    hours.append(box);
+/* ---------- detail sheet ---------- */
+const sheet = $('sheet');
+function openSheet(icon, title, d, hash) {
+  $('sheet-ic').textContent = icon;
+  $('sheet-title').textContent = title;
+  const body = $('sheet-body'); body.replaceChildren();
+  if (d.text) body.append(el('p', d.text));
+  if (d.chips) {
+    const c = el('div', null, 'chips');
+    d.chips.forEach(x => c.append(el('span', x.text, 'chip ' + (x.ok ? 'ok' : 'bad'))));
+    body.append(c);
+  }
+  const rows = (items, parent) => items.forEach(it => {
+    const r = el('div', null, 'row'); r.append(el('span', it.item), el('span', price(it.price), 'p')); parent.append(r);
   });
-  k.welcome.forEach(t => $('welcome').append(el('li', t)));
-  k.notWelcome.forEach(t => $('not-welcome').append(el('li', t)));
+  if (d.items) rows(d.items, body);
+  (d.categories || []).forEach(c => { body.append(el('div', c.name, 'cat')); rows(c.items, body); });
+  const list = (title, items, cls) => {
+    if (!items || !items.length) return;
+    const wrap = el('div', null, cls); wrap.append(el('h4', title));
+    const ul = el('ul'); items.forEach(t => ul.append(el('li', t))); wrap.append(ul); body.append(wrap);
+  };
+  list(d.yesTitle || 'Yes, please', d.yes, 'yes');
+  list(d.noTitle || 'Please not', d.no, 'no');
+  if (d.note) body.append(el('p', d.note, 'note'));
+  if (hash) history.replaceState(null, '', '#' + hash);
+  sheet.showModal();
+  sheet.querySelector('.sheet').scrollTop = 0;
+}
+function closeSheet() { sheet.close(); }
+sheet.addEventListener('close', () => history.replaceState(null, '', location.pathname + location.search));
+$('sheet-close').onclick = closeSheet;
+sheet.addEventListener('click', e => { if (e.target === sheet) closeSheet(); });   // tap outside = close
+
+/* ---------- kiosk ---------- */
+function renderKiosk(k, services) {
+  const pad = n => String(n).padStart(2, '0');
+  [1, 2, 3, 4, 5, 6, 0].forEach(d => {
+    const s = el('span', DAYS[d]); s.dataset.day = d;
+    if (!k.openDays.includes(d)) s.classList.add('off');
+    $('days').append(s);
+  });
+  $('time').textContent = `Shift ${pad(k.openHour)}:00–${pad(k.closeHour)}:00`;
   $('kiosk-note').textContent = k.note || '';
 
+  (services || []).forEach(s => {
+    const b = el('button', null, 'tile'); b.type = 'button';
+    const name = el('div'); name.append(el('b', s.title));
+    if (s.tag) name.append(el('span', s.tag, 'tag' + (s.tag === 'Free' ? ' free' : '')));
+    b.append(el('span', s.icon, 'ic'), name);
+    b.onclick = () => openSheet(s.icon, s.title, s.detail || {}, s.id);
+    $('tiles').append(b);
+  });
+  // Deep link, e.g. gras-olydorf.github.io/#bio (handy for a QR code on the bin)
+  const fromHash = () => {
+    const hit = (services || []).find(s => '#' + s.id === location.hash);
+    if (hit && !sheet.open) openSheet(hit.icon, hit.title, hit.detail || {}, hit.id);
+  };
+  fromHash(); addEventListener('hashchange', fromHash);
+
   const update = () => {
-    const t = munichNow(), s = $('status'), txt = $('status-text');
-    hours.querySelectorAll('[data-day]').forEach(b => b.classList.toggle('today', +b.dataset.day === t.day));
+    const t = munichNow(), st = $('status'), txt = $('status-text');
+    $('days').querySelectorAll('[data-day]').forEach(b => b.classList.toggle('today', +b.dataset.day === t.day));
     const today = k.openDays.includes(t.day);
     if (today && t.h >= k.openHour && t.h < k.closeHour) {
-      s.className = 'status open'; txt.textContent = `Open now · until ${pad(k.closeHour)}:00`;
+      st.className = 'status open'; txt.textContent = `Open · until ${pad(k.closeHour)}:00`;
     } else {
-      s.className = 'status closed';
-      if (today && t.h < k.openHour) { txt.textContent = `Closed · opens today at ${pad(k.openHour)}:00`; return; }
+      st.className = 'status closed';
+      if (today && t.h < k.openHour) { txt.textContent = `Opens today ${pad(k.openHour)}:00`; return; }
       let n = 1; while (!k.openDays.includes((t.day + n) % 7) && n < 8) n++;
-      txt.textContent = `Closed · opens ${n === 1 ? 'tomorrow' : DAY_NAMES[(t.day + n) % 7]} at ${pad(k.openHour)}:00`;
+      txt.textContent = `Opens ${n === 1 ? 'tomorrow' : DAYS[(t.day + n) % 7]} ${pad(k.openHour)}:00`;
     }
   };
   update(); setInterval(update, 60000);
 }
 
+/* ---------- event ---------- */
 function renderEvent(e) {
   if (!e || !e.date) return;
   const [y, m, d] = e.date.split('-').map(Number);
@@ -213,16 +307,11 @@ function renderEvent(e) {
   $('event-day').textContent = d;
   $('event-month').textContent = MONTHS[m - 1];
   $('event-title').textContent = '🎄 ' + e.title;
-  $('event-text').textContent = e.text || '';
   $('countdown').textContent = days > 1 ? `⏳ ${days} days to go` : days === 1 ? '⏳ Tomorrow!' : '✨ Today! See you there';
-  (e.prices || []).forEach(p => {
-    const row = el('div', null, 'menu-row');
-    row.append(el('span', p.item), el('span', p.price || 'price coming soon', 'p'));
-    $('menu').append(row);
-  });
-  $('event-note').textContent = e.note || '';
+  $('event-more').onclick = () => openSheet('🎄', e.title, { text: e.text, items: e.prices, note: e.note });
 }
 
+/* ---------- links ---------- */
 function setLink(id, url, subId, subText) {
   const a = $(id);
   if (url) { a.href = url; a.classList.remove('disabled'); }
@@ -246,7 +335,7 @@ async function renderLinks(l) {
 
 fetch('data/kiosk.json', { cache: 'no-cache' })
   .then(r => r.json())
-  .then(data => { renderKiosk(data.kiosk); renderEvent(data.event); renderLinks(data.links || {}); })
+  .then(data => { renderKiosk(data.kiosk, data.services); renderEvent(data.event); renderLinks(data.links || {}); })
   .catch(() => { $('status-text').textContent = 'Could not load the opening hours'; });
 </script>
 </body>

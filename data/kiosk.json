@@ -1,25 +1,163 @@
 {
-  "_help": "Edit the values below in the GitHub web editor, then Commit. The page updates within about a minute. Times are Munich time. Days: 0=Sun 1=Mon 2=Tue 3=Wed 4=Thu 5=Fri 6=Sat.",
-
+  "_help": "Edit the values below in the GitHub web editor, then Commit. Days: 0=Sun 1=Mon ... 6=Sat. Each entry in 'services' is one tile; its 'detail' is what opens when you tap it. Prices are numbers in euro (1.2 = 1,20 €). Never put names or phone numbers here: this repo is public.",
   "kiosk": {
-    "openDays": [1, 3, 4],
+    "openDays": [1, 2, 3, 4, 5],
     "openHour": 20,
     "closeHour": 21,
-    "welcome": [
-      "Kitchenware & dishes",
-      "Books, games, decor",
-      "Small furniture & lamps",
-      "Clean clothes & textiles"
-    ],
-    "notWelcome": [
-      "Broken or dirty items",
-      "Food & liquids",
-      "Mattresses",
-      "Batteries & chemicals"
-    ],
-    "note": "Outside opening hours you can still leave things there, just keep it tidy for the next person."
+    "note": "Times follow the semester shift plan. On public holidays and in the lecture-free period they can change, so check the WhatsApp group."
   },
-
+  "services": [
+    {
+      "id": "print",
+      "icon": "🖨️",
+      "title": "Free printing",
+      "tag": "Free",
+      "detail": {
+        "text": "Need to print a few pages? Come by during the Kiosk shift and print for free."
+      }
+    },
+    {
+      "id": "shop",
+      "icon": "🛒",
+      "title": "Kiosk shop",
+      "tag": "from 0,60 €",
+      "detail": {
+        "text": "Pay at the Kiosk during the shift. Stock changes, so not everything is always there.",
+        "categories": [
+          {
+            "name": "🍝 Food",
+            "items": [
+              { "item": "Whole-wheat spaghetti", "price": 1.0 },
+              { "item": "Penne", "price": 1.0 },
+              { "item": "Instant noodles", "price": 1.0 },
+              { "item": "Oats", "price": 1.0 },
+              { "item": "Muesli", "price": 1.5 },
+              { "item": "Chocolate muesli", "price": 2.5 },
+              { "item": "Oat milk", "price": 1.0 },
+              { "item": "Pesto", "price": 1.2 }
+            ]
+          },
+          {
+            "name": "🍫 Snacks",
+            "items": [
+              { "item": "Protein bar", "price": 1.0 },
+              { "item": "Chocolate", "price": 1.3 },
+              { "item": "Gummy bears", "price": 1.5 },
+              { "item": "Cookies", "price": 2.0 },
+              { "item": "Chips", "price": 2.0 }
+            ]
+          },
+          {
+            "name": "🥤 Drinks",
+            "items": [
+              { "item": "Spezi / Cola-Mix", "price": 1.2 },
+              { "item": "Apfelschorle", "price": 1.2 },
+              { "item": "Orange lemonade", "price": 1.2 },
+              { "item": "Alcohol-free beer", "price": 1.2 },
+              { "item": "Red Bull", "price": 1.5 },
+              { "item": "Helles / Weißbier", "price": 1.5 },
+              { "item": "Radler", "price": 1.5 }
+            ]
+          },
+          {
+            "name": "🧴 Bathroom & household",
+            "items": [
+              { "item": "Toilet paper", "price": 2.7 },
+              { "item": "Toothpaste", "price": 1.0 },
+              { "item": "Toothbrush", "price": 2.0 },
+              { "item": "Soap", "price": 1.0 },
+              { "item": "Shower gel", "price": 0.9 },
+              { "item": "Dish soap", "price": 1.2 },
+              { "item": "Tampons", "price": 2.0 },
+              { "item": "Pads", "price": 1.7 },
+              { "item": "Condoms", "price": 3.0 }
+            ]
+          },
+          {
+            "name": "🩹 First aid",
+            "items": [
+              { "item": "Plasters", "price": 0.6 },
+              { "item": "Sterile wound dressing", "price": 2.0 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "borrow",
+      "icon": "🧹",
+      "title": "Vacuum & more",
+      "tag": "Borrow",
+      "detail": {
+        "text": "Borrow it during the shift, bring it back and you get your deposit back.",
+        "items": [
+          { "item": "Vacuum cleaner", "price": "1 € + 50 € deposit" },
+          { "item": "Beer bench set", "price": "2 € + deposit" }
+        ]
+      }
+    },
+    {
+      "id": "bins",
+      "icon": "🗑️",
+      "title": "Free trash bins",
+      "tag": "Free",
+      "detail": {
+        "text": "Take a trash bin for your room for free. Just bring it back to the Kiosk when you move out."
+      }
+    },
+    {
+      "id": "bio",
+      "icon": "🍂",
+      "title": "Bio-Tonne",
+      "tag": "20–21 h",
+      "detail": {
+        "text": "The Bio-Tonne at the Kiosk is open during the shift, 20–21 h.",
+        "chips": [
+          {
+            "text": "📄 Paper bags",
+            "ok": true
+          },
+          {
+            "text": "🛍️ Bio plastic bags",
+            "ok": false
+          }
+        ],
+        "yes": [
+          "Food scraps, fruit & veg peels",
+          "Coffee grounds, tea bags",
+          "Bio paper bags or newspaper"
+        ],
+        "no": [
+          "Bio plastic bags, even \"compostable\" ones",
+          "Plastic & packaging",
+          "Glass, metal, cat litter"
+        ],
+        "note": "Bio plastic bags don't break down in time at the composting plant, so the whole load gets sorted out. Paper bags are fine."
+      }
+    },
+    {
+      "id": "swap",
+      "icon": "♻️",
+      "title": "Swap & donate",
+      "tag": "Free",
+      "detail": {
+        "text": "Moving out or couldn't sell something? Drop usable items at the Yellow Kiosk and someone else in the Dorf can take them for free.",
+        "yes": [
+          "Kitchenware & dishes",
+          "Books, games, decor",
+          "Small furniture & lamps",
+          "Clean clothes & textiles"
+        ],
+        "no": [
+          "Broken or dirty items",
+          "Food & liquids",
+          "Mattresses",
+          "Batteries & chemicals"
+        ],
+        "note": "Outside opening hours you can still leave things there, just keep it tidy for the next person."
+      }
+    }
+  ],
   "event": {
     "title": "Christmas Market in the Olydorf",
     "date": "2026-12-18",
@@ -30,7 +168,6 @@
     ],
     "note": "Helping at the stand? Remember your health certificate (Gesundheitszeugnis) if you serve drinks or make waffles."
   },
-
   "links": {
     "whatsappGroup": "",
     "marketplace": "",
