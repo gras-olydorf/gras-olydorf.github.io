@@ -1,5 +1,5 @@
 {
-  "_help": "Edit the values below in the GitHub web editor, then Commit. Days: 0=Sun 1=Mon ... 6=Sat. Each entry in 'services' is one tile; its 'detail' is what opens when you tap it. Prices are numbers in euro (1.2 = 1,20 €). Never put names or phone numbers here: this repo is public.",
+  "_help": "Edit the values below in the GitHub web editor, then Commit. Days: 0=Sun 1=Mon ... 6=Sat. Each entry in 'services' is one tile; its 'detail' is what opens when you tap it. Prices are numbers in euro (1.2 = 1,20 €). Never put names or phone numbers here: this repo is public. 'blurb' is the short line on the tile.",
   "kiosk": {
     "openDays": [1, 2, 3, 4, 5],
     "openHour": 20,
@@ -14,7 +14,8 @@
       "tag": "Free",
       "detail": {
         "text": "Need to print a few pages? Come by during the Kiosk shift and print for free."
-      }
+      },
+      "blurb": "Print a few pages, on us."
     },
     {
       "id": "shop",
@@ -81,7 +82,8 @@
             ]
           }
         ]
-      }
+      },
+      "blurb": "Pasta, snacks, toilet paper & more."
     },
     {
       "id": "borrow",
@@ -94,7 +96,8 @@
           { "item": "Vacuum cleaner", "price": "1 € + 50 € deposit" },
           { "item": "Beer bench set", "price": "2 € + deposit" }
         ]
-      }
+      },
+      "blurb": "Vacuum cleaner, bench sets."
     },
     {
       "id": "bins",
@@ -103,7 +106,8 @@
       "tag": "Free",
       "detail": {
         "text": "Take a trash bin for your room for free. Just bring it back to the Kiosk when you move out."
-      }
+      },
+      "blurb": "Keep it, return it when you move out."
     },
     {
       "id": "bio",
@@ -133,7 +137,8 @@
           "Glass, metal, cat litter"
         ],
         "note": "Bio plastic bags don't break down in time at the composting plant, so the whole load gets sorted out. Paper bags are fine."
-      }
+      },
+      "blurb": "Food scraps, paper bags only."
     },
     {
       "id": "swap",
@@ -155,22 +160,8 @@
           "Batteries & chemicals"
         ],
         "note": "Outside opening hours you can still leave things there, just keep it tidy for the next person."
-      }
+      },
+      "blurb": "Give away, take home, for free."
     }
-  ],
-  "event": {
-    "title": "Christmas Market in the Olydorf",
-    "date": "2026-12-18",
-    "text": "Glühwein, waffles and good company. Come by, bring friends, and help us set up if you like!",
-    "prices": [
-      { "item": "🍷 Glühwein", "price": "" },
-      { "item": "🧇 Waffles", "price": "" }
-    ],
-    "note": "Helping at the stand? Remember your health certificate (Gesundheitszeugnis) if you serve drinks or make waffles."
-  },
-  "links": {
-    "whatsappGroup": "",
-    "marketplace": "",
-    "contact": ""
-  }
+  ]
 }
