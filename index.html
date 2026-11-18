@@ -100,6 +100,19 @@
   .row .p{color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
   .cat{font-weight:700;font-size:.9rem;margin:16px 0 2px;color:var(--moss)}
 
+  /* Events: date badge + text */
+  .events h2{margin-bottom:10px}
+  .ev{display:flex;gap:14px;padding:12px 0;border-top:1px solid #f1f4ee}
+  .ev:first-of-type{border-top:0;padding-top:4px}
+  .badge{flex:0 0 62px;height:62px;border-radius:14px;background:var(--sage);color:var(--forest);
+         display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.05;text-align:center}
+  .badge .ic{font-size:1.25rem}
+  .badge small{font-size:.68rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-top:3px}
+  .ev.weekly .badge{background:#fff1bf;color:#7a5c00}
+  .ev b{display:block;font-size:1rem;line-height:1.25}
+  .ev .when{font-size:.82rem;font-weight:700;color:var(--berry);margin:2px 0}
+  .ev p{font-size:.88rem;color:var(--muted);line-height:1.4}
+
   footer{text-align:center;color:var(--muted);font-size:.8rem;padding:20px 0 32px}
 </style>
 </head>
@@ -121,6 +134,12 @@
   <section class="card kiosk" id="kiosk" aria-label="Kiosk services">
     <div class="tiles" id="tiles"></div>
     <p class="note" id="kiosk-note"></p>
+  </section>
+
+  <section class="card events" id="events" aria-label="Upcoming events" hidden>
+    <div class="eyebrow">What's on</div>
+    <h2>Upcoming events</h2>
+    <div id="event-list"></div>
   </section>
 
 </main>
@@ -239,9 +258,47 @@ function renderKiosk(k, services) {
   update(); setInterval(update, 60000);
 }
 
+/* ---------- events ---------- */
+// Weekly: { weekday, from, until }  ·  One-off: { date: "YYYY-MM-DD" }, empty date = "date coming soon"
+function renderEvents(events) {
+  const t = munichNow();
+  const today = Date.UTC(t.y, t.mo - 1, t.d);
+  const parse = s => { const [y, m, d] = s.split('-').map(Number); return Date.UTC(y, m - 1, d); };
+  const DAY = 864e5;
+  const fmt = ms => { const d = new Date(ms); return `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]}`; };
+
+  const list = (events || []).map(e => {
+    if (e.weekday != null) {                       // repeating event: find the next date
+      let start = Math.max(today, e.from ? parse(e.from) : today);
+      while (new Date(start).getUTCDay() !== e.weekday) start += DAY;
+      if (e.until && start > parse(e.until)) return null;
+      const range = e.until ? ` · until ${fmt(parse(e.until))}` : '';
+      return { e, sort: start, weekly: true, badge: DAYS[e.weekday],
+               when: `Every ${DAY_NAMES[e.weekday]} · ${e.time || ''}${range}`.replace(' · ·', ' ·') };
+    }
+    if (!e.date) return { e, sort: Infinity, badge: 'Soon', when: `Date coming soon${e.time ? ' · ' + e.time : ''}` };
+    const d = parse(e.date);
+    if (d < today) return null;                    // past one-off events hide themselves
+    return { e, sort: d, badge: fmt(d), when: `${DAY_NAMES[new Date(d).getUTCDay()]}, ${fmt(d)}${e.time ? ' · ' + e.time : ''}` };
+  }).filter(Boolean).sort((a, b) => a.sort - b.sort);
+
+  if (!list.length) return;
+  list.forEach(x => {
+    const row = el('div', null, 'ev' + (x.weekly ? ' weekly' : ''));
+    const badge = el('div', null, 'badge');
+    badge.append(el('span', x.e.icon || '📅', 'ic'), el('small', x.badge));
+    const body = el('div');
+    body.append(el('b', x.e.title), el('div', x.when, 'when'));
+    if (x.e.text) body.append(el('p', x.e.text));
+    row.append(badge, body);
+    $('event-list').append(row);
+  });
+  $('events').hidden = false;
+}
+
 fetch('data/kiosk.json', { cache: 'no-cache' })
   .then(r => r.json())
-  .then(data => { renderKiosk(data.kiosk, data.services); })
+  .then(data => { renderKiosk(data.kiosk, data.services); renderEvents(data.events); })
   .catch(() => { $('status-text').textContent = 'Could not load the opening hours'; });
 </script>
 </body>

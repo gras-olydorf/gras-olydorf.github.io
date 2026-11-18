@@ -1,5 +1,5 @@
 {
-  "_help": "Edit the values below in the GitHub web editor, then Commit. Days: 0=Sun 1=Mon ... 6=Sat. Each entry in 'services' is one tile; its 'detail' is what opens when you tap it. Prices are numbers in euro (1.2 = 1,20 €). Never put names or phone numbers here: this repo is public. 'blurb' is the short line on the tile.",
+  "_help": "Edit the values below in the GitHub web editor, then Commit. Days: 0=Sun 1=Mon ... 6=Sat. Each entry in 'services' is one tile; its 'detail' is what opens when you tap it. Prices are numbers in euro (1.2 = 1,20 €). Never put names or phone numbers here: this repo is public. 'blurb' is the short line on the tile. 'events': repeating events use 'weekday' (0=Sun) plus 'from'/'until'; one-off events use 'date' (YYYY-MM-DD, leave it empty if not fixed yet). Past events hide themselves.",
   "kiosk": {
     "openDays": [1, 2, 3, 4, 5],
     "openHour": 20,
@@ -162,6 +162,32 @@
         "note": "Outside opening hours you can still leave things there, just keep it tidy for the next person."
       },
       "blurb": "Give away, take home, for free."
+    },
+    {
+      "id": "books",
+      "icon": "📚",
+      "title": "Book shelf",
+      "tag": "Free",
+      "detail": {
+        "text": "Our open book shelf at the Yellow Kiosk: put books on it, take any you like. No sign-up, no need to bring them back – do whatever you want with them.",
+        "yes": [
+          "Novels, non-fiction, comics",
+          "Textbooks & language books",
+          "Books in any language"
+        ],
+        "note": "Please keep the shelf tidy so the next person finds something too."
+      },
+      "blurb": "Take a book, leave a book."
     }
+  ],
+  "events": [
+    { "icon": "🍷", "title": "Glühwein Night", "weekday": 0, "from": "2026-11-15", "until": "2026-12-13", "time": "19–22 h",
+      "text": "Glühwein, punch & vegan crêpes. Card payment only – bring your key & your own mug!" },
+    { "icon": "🌷", "title": "Garden Day", "date": "", "time": "10:00",
+      "text": "Meet at the Kiosk and bring gardening gloves. We make the garden pretty and plant flower bulbs." },
+    { "icon": "🎨", "title": "Mug painting × TA", "date": "2026-12-06", "time": "19:00",
+      "text": "Paint your own mug at Glühwein Night – 15 € incl. a Glühwein." },
+    { "icon": "🎄", "title": "Olydorf Christmas Market", "date": "2026-12-18", "time": "17:00",
+      "text": "Stalls from many committees, mulled wine & hot drinks." }
   ]
 }
